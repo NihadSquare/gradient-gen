@@ -1,0 +1,60 @@
+{
+  "name": "gradient-gen",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Gradient Gen for the web: 28 gradient types, 25 effects, palette tools and exports, running entirely in your browser.",
+  "license": "MIT",
+  "author": {
+    "name": "AK Nihad",
+    "url": "https://github.com/NihadSquare"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NihadSquare/gradient-gen.git"
+  },
+  "homepage": "https://nihadsquare.github.io/gradient-gen/",
+  "bugs": {
+    "url": "https://github.com/NihadSquare/gradient-gen/issues"
+  },
+  "keywords": [
+    "gradient",
+    "gradient-generator",
+    "background-generator",
+    "wallpaper",
+    "css-gradient",
+    "color-palette",
+    "oklab",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
