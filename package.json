@@ -1,8 +1,8 @@
 {
   "name": "gradient-gen",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "private": true,
-  "description": "Gradient Gen for the web: 28 gradient types, 25 effects, palette tools and exports, running entirely in your browser.",
+  "description": "Gradient Gen for the web: 28 gradient types, 25 effects, palette tools and exports, running entirely in your browser. Same pictures as the desktop app.",
   "license": "MIT",
   "author": {
     "name": "AK Nihad",
@@ -17,8 +17,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
-    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "zustand": "^4.5.5"

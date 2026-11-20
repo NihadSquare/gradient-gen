@@ -1,26 +1,16 @@
 /** @type {import('tailwindcss').Config} */
+const c = (v) => `rgb(var(${v}) / <alpha-value>)`;
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        bg: "rgb(var(--bg) / <alpha-value>)",
-        surface: "rgb(var(--surface) / <alpha-value>)",
-        surface2: "rgb(var(--surface2) / <alpha-value>)",
-        line: "rgb(var(--line) / <alpha-value>)",
-        ink: "rgb(var(--ink) / <alpha-value>)",
-        dim: "rgb(var(--dim) / <alpha-value>)",
-        accent: "rgb(var(--accent) / <alpha-value>)",
-        "accent-ink": "rgb(var(--accent-ink) / <alpha-value>)",
-        warn: "rgb(var(--warn) / <alpha-value>)",
-        ok: "rgb(var(--ok) / <alpha-value>)",
-        bad: "rgb(var(--bad) / <alpha-value>)",
-        track: "rgb(var(--track) / <alpha-value>)",
-        stage: "rgb(var(--stage) / <alpha-value>)",
+        bg: c("--bg"), surface: c("--surface"), surface2: c("--surface2"), line: c("--line"), ink: c("--ink"), dim: c("--dim"),
+        accent: c("--accent"), "accent-hover": c("--accent-hover"), "accent-ink": c("--accent-ink"), track: c("--track"), stage: c("--stage"),
+        ok: c("--ok"), warn: c("--warn"), bad: c("--bad"),
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque Variable"', '"Bricolage Grotesque"', "ui-sans-serif", "system-ui", "sans-serif"],
-        sans: ['"Hanken Grotesk Variable"', '"Hanken Grotesk"', "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        sans: ['"Segoe UI Variable Text"', '"Segoe UI"', '"SF Pro Text"', "-apple-system", "BlinkMacSystemFont", '"Helvetica Neue"', '"Inter Variable"', "Inter", "Roboto", '"DejaVu Sans"', "Arial", "sans-serif"],
       },
     },
   },

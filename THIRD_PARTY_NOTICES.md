@@ -13,10 +13,9 @@ Gradient Gen is released under the MIT licence (see `LICENSE`). It uses the foll
 
 ## Fonts
 
-Bundled through [Fontsource](https://fontsource.org). Both are licensed under the SIL Open Font License 1.1.
+Bundled through [Fontsource](https://fontsource.org), licensed under the SIL Open Font License 1.1.
 
-- **Bricolage Grotesque**, © The Bricolage Grotesque Project Authors
-- **Hanken Grotesk**, © The Hanken Grotesk Project Authors
+- **Inter**, © The Inter Project Authors. Used as the fallback when the desktop font (Segoe UI) is not installed.
 
 ## Trademarks and artwork
 

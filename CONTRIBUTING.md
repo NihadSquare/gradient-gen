@@ -27,7 +27,7 @@ Open an [issue](https://github.com/NihadSquare/gradient-gen/issues/new/choose) a
 
 - **The engine stays free of the DOM.** Everything in `src/engine/` must run in a Web Worker and in Node. Browser-only code goes in `src/lib/` or `src/components/`.
 - **Resolution independence.** Pattern sizes are defined for a 450 px wide picture and scale with the width (`scale` and `ref` in the engine), so an export looks like the preview.
-- **Same seed, same picture.** Use the seeded generator (`Rng`), never `Math.random()`, inside the engine.
+- **Same seed, same picture, in the desktop app too.** Inside the engine use the generators in `src/engine/nprng.ts` (exact copies of Python's `random`, NumPy's `RandomState` and `default_rng`), never `Math.random()`. If you change how a pattern draws random numbers, the tests in `tests/desktop.test.ts` will tell you.
 - **Nothing is uploaded.** Please do not add analytics, trackers or network requests to other sites.
 - **Accessibility.** Controls need labels, keyboard access and visible focus.
 

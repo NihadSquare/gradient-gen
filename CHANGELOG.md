@@ -2,12 +2,6 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
-## Windows app 3.99 - 2026-11-18
-
-### Added
-- `desktop/` folder with the original desktop program, its icon, Windows file properties and a one-click `build.bat`
-- GitHub workflow `Build Windows app` that builds `GradientGen.exe` on a Windows machine, starts it once as a check, and attaches it with a SHA-256 checksum to releases tagged `desktop-*`
-
 ## [4.1.0] - 2026-11-17
 
 The interface and the pictures now follow the desktop app *Gradient Gen v3.99* exactly.
