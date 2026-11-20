@@ -1,0 +1,4 @@
+# Libraries the app needs, and the tool that turns it into an .exe
+pillow>=11.0,<14
+numpy>=2.0,<3
+pyinstaller>=6.10,<7

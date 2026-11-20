@@ -9,7 +9,7 @@
 
 ![Gradient Gen screenshot](docs/screenshot.jpg)
 
-It is a static site: every picture is drawn on your device, nothing is uploaded, there is no sign-up and no server to run or pay for. It is the web version of the desktop app *Gradient Gen v3.99*.
+It is a static site: every picture is drawn on your device, nothing is uploaded, there is no sign-up and no server to run or pay for. It is the web version of the desktop app *Gradient Gen v3.99*: the same interface, the same windows, and the same seed gives the same picture in both.
 
 ## Features
 
@@ -23,6 +23,10 @@ It is a static site: every picture is drawn on your device, nothing is uploaded,
 - **Copy as CSS / SVG / image**
 - **Auto Generate** with per-setting locks, **undo / redo**, **presets** (import / export JSON), 8 themes, keyboard shortcuts
 - Works on phones and tablets, and offline once loaded
+
+## Windows app
+
+Prefer a program on your computer? **Gradient Gen for Windows** is the original desktop app as a single `.exe`: no install, works offline, exports up to 8192 px. Download `GradientGen-3.99-win64.exe` from the [Releases page](https://github.com/nihadsquare/gradient-gen/releases) (look for *Gradient Gen Desktop*). See [desktop/README.md](desktop/README.md) for details and the first-start Windows warning.
 
 ## Run it locally
 
