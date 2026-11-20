@@ -1,0 +1,75 @@
+name: Build Windows app
+
+# Builds the desktop program (desktop/gradient_gen.py) into GradientGen.exe on a Windows machine.
+#  - Run it by hand:  Actions tab -> "Build Windows app" -> Run workflow   (result: a download in the run)
+#  - Or publish a release whose tag starts with "desktop-" (for example desktop-v3.99):
+#    the .exe and its checksum are attached to that release automatically.
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'desktop-')
+    runs-on: windows-latest
+    env:
+      APP_VERSION: "3.99"
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: desktop/requirements.txt
+
+      - name: Install libraries
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Build GradientGen.exe
+        run: |
+          python -m PyInstaller --noconfirm --clean --onefile --windowed `
+            --name GradientGen --icon GG.ico --version-file version_info.txt `
+            --hidden-import PIL._tkinter_finder gradient_gen.py
+
+      - name: Smoke test (the program must start and stay open)
+        run: |
+          $p = Start-Process -FilePath .\dist\GradientGen.exe -PassThru
+          Start-Sleep -Seconds 15
+          if ($p.HasExited) { throw "GradientGen.exe closed by itself (exit code $($p.ExitCode))" }
+          Stop-Process -Id $p.Id -Force
+
+      - name: Name the file and write its checksum
+        run: |
+          $name = "GradientGen-$env:APP_VERSION-win64.exe"
+          Copy-Item dist\GradientGen.exe "dist\$name"
+          $hash = (Get-FileHash "dist\$name" -Algorithm SHA256).Hash.ToLower()
+          "$hash  $name" | Out-File -Encoding ascii "dist\$name.sha256"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: GradientGen-windows
+          path: |
+            desktop/dist/GradientGen-*.exe
+            desktop/dist/GradientGen-*.sha256
+
+      - name: Attach to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" `
+            "dist/GradientGen-$env:APP_VERSION-win64.exe" `
+            "dist/GradientGen-$env:APP_VERSION-win64.exe.sha256" `
+            --clobber --repo "${{ github.repository }}"
