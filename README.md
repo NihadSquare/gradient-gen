@@ -1,11 +1,12 @@
 # Gradient Gen
+![Gradient Gen: gradient backgrounds, right in your browser](docs/repo-card.png)
 
 [![Deploy](https://github.com/NihadSquare/gradient-gen/actions/workflows/deploy.yml/badge.svg)](https://github.com/NihadSquare/gradient-gen/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5240FF.svg)](LICENSE)
 
 **Make backgrounds and wallpapers in your browser.** 28 gradient types, 25 effects, multi-stop colors with RGB / HSL / OKLab blending, palette tools, overlays and exports up to 4096 px.
 
-### 👉 [Open Gradient Gen](https://nihadsquare.github.io/gradient-gen/)  ·  ⬇ [Download for Windows](#windows-app-desktop-version-41)
+### 👉 [Open Gradient Gen](https://nihadsquare.github.io/gradient-gen/)   ·   ⬇ [Download for Windows](#windows-app-desktop-version-41)
 
 ![Gradient Gen screenshot](docs/screenshot.jpg)
 
@@ -21,7 +22,7 @@ It is a static site: every picture is drawn on your device, nothing is uploaded,
 - **Overlays**: text and logo, plus White / Black / Transparent background
 - **Output**: PNG, JPEG, WebP; 13 size presets; batch mode that saves a ZIP; guides (thirds, golden ratio, safe area, social crops)
 - **Copy as CSS / SVG / image**
-- **Auto Generate** with per-setting locks, **undo / redo**, **presets** (import / export JSON), 8 themes, keyboard shortcuts
+- **Auto Generate** with per-setting locks, **undo/redo**, **presets** (import/export JSON), 8 themes, keyboard shortcuts
 - Works on phones and tablets, and offline once loaded
 
 ## Windows app (desktop version 4.1)
@@ -101,7 +102,7 @@ The build uses relative paths (`base: "./"`), so it works at any address, includ
 | `src/components/` | React interface |
 | `tests/` | Vitest unit tests |
 
-Previews are drawn by a Web Worker so the page stays responsive. If workers are unavailable the app falls back to the main thread.
+Previews are drawn by a Web Worker so the page stays responsive. If workers are unavailable, the app falls back to the main thread.
 
 See [docs/PORTING_NOTES.md](docs/PORTING_NOTES.md) for what changed compared with the desktop version and how the port was checked.
 
