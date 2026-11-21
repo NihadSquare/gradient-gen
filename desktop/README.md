@@ -1,6 +1,6 @@
 # Gradient Gen for Windows (desktop app)
 
-This folder holds the original desktop program **Gradient Gen v3.99** and everything needed to turn it into a single `GradientGen.exe`.
+This folder holds the original desktop program **Gradient Gen v4.1** and everything needed to turn it into a single `GradientGen.exe`.
 
 ## Download
 
