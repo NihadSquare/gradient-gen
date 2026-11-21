@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Gradient Gen v3.99 - standalone edition (single file)
+Gradient Gen v4.1 - standalone edition (single file)
 
 Developed by Nihad Square.
 The program icon (GG.ico) and the logos (GG.png, NS.png) are embedded at the bottom of
@@ -30,7 +30,7 @@ import tempfile
 from colorsys import rgb_to_hls, hls_to_rgb
 
 APP_NAME = "Gradient Gen"
-APP_VERSION = "3.99"
+APP_VERSION = "4.1"
 APP_BUILD = "GG07112026P"
 APP_ID = "AKNCreatives.GradientGen.3"      # Windows taskbar grouping / icon identity
 MAX_DIM = 8192                              # max export width or height (px)
