@@ -1,21 +1,25 @@
 name: Build Windows app
 
-# Builds the desktop program (desktop/gradient_gen.py) into GradientGen.exe on a Windows machine.
-#  - Run it by hand:  Actions tab -> "Build Windows app" -> Run workflow   (result: a download in the run)
-#  - Or publish a release whose tag starts with "desktop-" (for example desktop-v3.99):
-#    the .exe and its checksum are attached to that release automatically.
+# Builds the desktop program (desktop/gradient_gen.py) into GradientGen.exe on a Windows machine
+# and puts it in a DRAFT release. Draft first, publish second: GitHub's "immutable releases"
+# lock a release (and its files) the moment it is published.
+#
+# How to use:  Actions tab -> "Build Windows app" -> Run workflow -> type a NEW tag, for example windows-v4.1
+# Then open Releases, check the draft, and click "Publish release".
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
+    inputs:
+      tag:
+        description: "Tag for the release (must be new, for example windows-v4.1)"
+        required: true
+        default: "windows-v4.1"
 
 permissions:
   contents: write
 
 jobs:
   windows:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'desktop-')
     runs-on: windows-latest
     env:
       APP_VERSION: "4.1"
@@ -64,12 +68,36 @@ jobs:
             desktop/dist/GradientGen-*.exe
             desktop/dist/GradientGen-*.sha256
 
-      - name: Attach to the release
-        if: github.event_name == 'release'
+      - name: Create a draft release with the files
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
         run: |
-          gh release upload "${{ github.event.release.tag_name }}" `
-            "dist/GradientGen-$env:APP_VERSION-win64.exe" `
-            "dist/GradientGen-$env:APP_VERSION-win64.exe.sha256" `
-            --clobber --repo "${{ github.repository }}"
+          $ErrorActionPreference = 'Continue'
+          $exe = "dist/GradientGen-$env:APP_VERSION-win64.exe"
+          $sum = "$exe.sha256"
+
+          $found = gh release view $env:TAG --repo $env:REPO --json isDraft 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            if (-not ($found | ConvertFrom-Json).isDraft) {
+              throw "A published release for '$env:TAG' already exists. GitHub locks published releases, so no files can be added. Run this workflow again with a NEW tag name."
+            }
+            gh release upload $env:TAG $exe $sum --clobber --repo $env:REPO
+            if ($LASTEXITCODE -ne 0) { throw "Could not add the files to the draft release." }
+          } else {
+            $notes = @'
+          The original Gradient Gen v{VERSION} desktop program as a single Windows file.
+          No install, works offline, exports up to 8192 px.
+
+          Download GradientGen-{VERSION}-win64.exe below. Windows 10 or 11, 64-bit.
+
+          First start: if Windows shows "Windows protected your PC", click More info, then Run anyway.
+          The file is not signed with a paid certificate.
+          To check your download, compare its SHA-256 with the .sha256 file below.
+          '@
+            $notes = $notes.Replace('{VERSION}', $env:APP_VERSION)
+            gh release create $env:TAG $exe $sum --draft --repo $env:REPO --target $env:SHA --title "Gradient Gen Desktop $env:APP_VERSION (Windows)" --notes $notes
+            if ($LASTEXITCODE -ne 0) { throw "Could not create the draft release." }
+          }
