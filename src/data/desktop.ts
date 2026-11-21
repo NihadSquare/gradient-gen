@@ -5,5 +5,5 @@ export const GUIDE_OPTS = ["Off", "Thirds", "Golden Ratio", "Centre Cross", "Saf
 export const OV_POSITIONS = ["Top-left", "Top-center", "Top-right", "Center", "Bottom-left", "Bottom-center", "Bottom-right"] as const;
 export const PICK_MODES = ["Dominant", "Vivid", "Muted / pastel", "Most different", "Light to dark", "Warm only", "Cool only"] as const;
 export const APP_NAME = "Gradient Gen";
-export const APP_VERSION = "3.99";
+export const APP_VERSION = "4.1";
 export const APP_BUILD = "GG07112026P";
