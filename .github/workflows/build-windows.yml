@@ -18,7 +18,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'desktop-')
     runs-on: windows-latest
     env:
-      APP_VERSION: "3.99"
+      APP_VERSION: "4.1"
     defaults:
       run:
         shell: pwsh
