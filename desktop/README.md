@@ -4,7 +4,7 @@ This folder holds the original desktop program **Gradient Gen v4.1** and everyth
 
 ## Download
 
-Get the ready-made file from the [Releases page](https://github.com/nihadsquare/gradient-gen/releases). Look for the release whose name starts with **Gradient Gen Desktop** and download `GradientGen-3.99-win64.exe`. There is nothing to install: put the file anywhere (the Desktop, a USB stick) and double-click it. Windows 10 or 11, 64-bit.
+Get the ready-made file from the [Releases page](https://github.com/nihadsquare/gradient-gen/releases). Open the release **Gradient Gen Desktop 4.1 (Windows)** and download `GradientGen-4.1-win64.exe` (direct link: <https://github.com/nihadsquare/gradient-gen/releases/download/windows-v4.1/GradientGen-4.1-win64.exe>). There is nothing to install: put the file anywhere (the Desktop, a USB stick) and double-click it. Windows 10 or 11, 64-bit.
 
 Your settings, presets and palettes are saved in `%APPDATA%\GradientGen`, so you can move or replace the `.exe` without losing them.
 
@@ -17,7 +17,7 @@ The file is not signed with a paid certificate, so Windows SmartScreen shows a b
 Some antivirus programs also warn about any new program made with PyInstaller. To check that your download is the original, compare its fingerprint with the `.sha256` file on the release:
 
 ```powershell
-Get-FileHash .\GradientGen-3.99-win64.exe -Algorithm SHA256
+Get-FileHash .\GradientGen-4.1-win64.exe -Algorithm SHA256
 ```
 
 If a program wrongly blocks it, you can report the file as a false positive at <https://www.microsoft.com/en-us/wdsi/filesubmission> (Microsoft Defender) or on your antivirus vendor's website.
@@ -43,6 +43,6 @@ python gradient_gen.py
 
 ## Build the .exe
 
-**On GitHub (no install):** Actions tab → *Build Windows app* → *Run workflow*. When it is green, open the run and download **GradientGen-windows** at the bottom. To attach the file to a release, publish a release whose tag starts with `desktop-` (for example `desktop-v3.99`).
+**On GitHub (no install):** Actions tab → *Build Windows app* → *Run workflow*, and type a new tag such as `windows-v4.1`. When the run is green, a **draft** release with `GradientGen-4.1-win64.exe` and its checksum appears under *Releases*. Check it, then click *Publish release*. (Published releases are locked by GitHub's immutable releases, so the file has to be in the draft before you publish.)
 
 **On your own PC:** install Python from <https://www.python.org/downloads/> (tick *Add python.exe to PATH*), then double-click `build.bat`. The result is `dist\GradientGen.exe`.

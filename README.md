@@ -5,11 +5,11 @@
 
 **Make backgrounds and wallpapers in your browser.** 28 gradient types, 25 effects, multi-stop colors with RGB / HSL / OKLab blending, palette tools, overlays and exports up to 4096 px.
 
-### 👉 [Open Gradient Gen](https://nihadsquare.github.io/gradient-gen/)
+### 👉 [Open Gradient Gen](https://nihadsquare.github.io/gradient-gen/)  ·  ⬇ [Download for Windows](#windows-app-desktop-version-41)
 
 ![Gradient Gen screenshot](docs/screenshot.jpg)
 
-It is a static site: every picture is drawn on your device, nothing is uploaded, there is no sign-up and no server to run or pay for. It is the web version of the desktop app *Gradient Gen v3.99*: the same interface, the same windows, and the same seed gives the same picture in both.
+It is a static site: every picture is drawn on your device, nothing is uploaded, there is no sign-up and no server to run or pay for. It is the web version of the desktop app *Gradient Gen* (the Windows version is available too, see below): the same interface, the same windows, and the same seed gives the same picture in both.
 
 ## Features
 
@@ -23,6 +23,53 @@ It is a static site: every picture is drawn on your device, nothing is uploaded,
 - **Copy as CSS / SVG / image**
 - **Auto Generate** with per-setting locks, **undo / redo**, **presets** (import / export JSON), 8 themes, keyboard shortcuts
 - Works on phones and tablets, and offline once loaded
+
+## Windows app (desktop version 4.1)
+
+### ⬇ [Download GradientGen-4.1-win64.exe](https://github.com/nihadsquare/gradient-gen/releases/download/windows-v4.1/GradientGen-4.1-win64.exe)
+
+[Release page with notes and checksum](https://github.com/nihadsquare/gradient-gen/releases/tag/windows-v4.1) · [All releases](https://github.com/nihadsquare/gradient-gen/releases)
+
+The original desktop program as one portable file. No installer, no admin rights, works offline.
+
+| | |
+| --- | --- |
+| **Version** | 4.1 |
+| **Works on** | Windows 10 and 11, 64-bit |
+| **Install** | None. Save the file anywhere (Desktop, USB stick) and double-click it |
+| **Internet** | Not needed |
+| **Largest picture** | 8192 × 8192 px |
+| **Your data** | Presets, palettes and preferences are saved in `%APPDATA%\GradientGen`, so you can move or replace the `.exe` without losing them |
+| **Licence** | MIT |
+
+**What you get:** everything in the web app (28 gradient types, 25 effects, palette tools, contrast checker, overlays, presets), plus exports up to 8192 px, batch export straight into a folder, a default save folder, and remembered window size.
+
+### The first start
+
+The file is not signed with a paid certificate, so Windows SmartScreen shows a blue "Windows protected your PC" box the first time.
+1. Click **More info**.
+2. Click **Run anyway**.
+
+The first start takes a few seconds longer because the single file unpacks itself. Some antivirus programs warn about any new program made with PyInstaller. Check your download against the `.sha256` file on the release page:
+
+```powershell
+Get-FileHash .\GradientGen-4.1-win64.exe -Algorithm SHA256
+```
+
+To remove the program, delete the `.exe`. To erase its saved data too, delete the folder `%APPDATA%\GradientGen`.
+
+### Web or Windows?
+
+| | Web app | Windows app |
+| --- | --- | --- |
+| Install | None | None (one file) |
+| Largest picture | 4096 × 4096 px | 8192 × 8192 px |
+| Undo / redo | Every edit (up to 80) | Last 5 Auto Generate pictures |
+| Batch export | One ZIP | Files in a folder |
+| Offline | After the first visit | Always |
+| Updates | Automatic | Download the new file |
+
+Build it yourself, or read how it is made: [desktop/README.md](desktop/README.md).
 
 ## Run it locally
 

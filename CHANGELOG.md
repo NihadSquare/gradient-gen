@@ -2,9 +2,20 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## Windows app 4.1 - 2026-11-21
+
+### Added
+- Windows version of the desktop program as a single portable `GradientGen-4.1-win64.exe`, with a download link and details in the README
+- `desktop/` folder with the program, its icon, Windows file properties and a one-click `build.bat`
+- GitHub workflow `Build Windows app` that builds the `.exe` on a Windows machine, starts it once as a check, and puts it with a SHA-256 checksum into a draft release (works with immutable releases) that you publish yourself
+
+### Changed
+- The desktop program's version number is now **4.1** (it was 3.99), matching the web app. The window title, footer and About window show it. Nothing else in the program changed.
+- The web app's status bar and About window show the same number: "Gradient Gen v4.1".
+
 ## [4.1.0] - 2026-11-17
 
-The interface and the pictures now follow the desktop app *Gradient Gen v3.99* exactly.
+The interface and the pictures now follow the desktop app *Gradient Gen* (then numbered v3.99) exactly.
 
 ### Changed
 - **New interface, same as the desktop app:** header with View / Settings / Presets / Reset / About, Colors / Output / Overlays cards with Auto Generate and Save Image below them, numbered color stops, preview with Zoom / Show Palette / Reverse / Seed, Gradient and Effects cards, status bar, and the same windows (Settings, Theme, Presets, Palette Tools with Library / Edit / Harmony / Import, Contrast, Tutorial, About, full-screen View)
