@@ -2,6 +2,23 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [4.2.0] - 2026-11-26
+
+Version 4.2 changes the licence and adds copy protection. Versions up to 4.1 stay under the MIT licence for the copies already made.
+
+### Changed
+- **Licence:** Gradient Gen is now source-available with all rights reserved (`LICENSE`). Using the apps and everything you create stays free; copying, hosting, redistributing or building a competing product is not allowed without written permission. Added `NOTICE` and `TRADEMARK.md` (names, logos and brand)
+- **Website:** the interface code is scrambled in the published build, source maps are off, and the app only runs on the official address (it shows a notice on unofficial copies and inside other sites' frames)
+- **Windows app:** built with Nuitka (compiled to machine code) instead of PyInstaller, which is much harder to decompile
+- Version number is now 4.2 for the web app and the Windows app
+
+### Added
+- Copyright header in every source file and hidden ownership markers
+- README: "Is this the official copy?" section
+
+### Removed
+- The README section "Deploy your own copy", which the new licence does not allow
+
 ## Windows app 4.1 - 2026-11-21
 
 ### Added

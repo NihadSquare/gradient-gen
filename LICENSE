@@ -1,21 +1,90 @@
-MIT License
+Gradient Gen Source-Available Licence, version 1.0
 
-Copyright (c) 2026 AK Nihad
+Copyright (c) 2026 AK Nihad (Nihad Square). All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+"Gradient Gen" means everything in this repository: the web app, the Windows app,
+the source code, the build files, the artwork and logos, the texts and the tests,
+from version 4.2 onward.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This is a source-available licence. The source code is public so that you can read
+it and use the official apps. It is NOT an open-source licence.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. WHAT YOU MAY DO
+
+   a) Use the official apps. Open the official website, or download an official
+      build from this repository's Releases page, and use it for any purpose,
+      including commercial work. No payment and no sign-up are needed.
+
+   b) Own your pictures. Everything you create with Gradient Gen (pictures,
+      palettes, presets) belongs to you. You may use it anywhere without credit.
+      This licence puts no limit on what you create.
+
+   c) Read the source. You may view and study the source code to learn from it,
+      to review its security, or to check what the app does.
+
+   d) Fork and contribute. You may copy the repository to your own GitHub account
+      to the extent GitHub's Terms of Service allow, and to prepare a contribution
+      (a pull request) to this project.
+
+   e) Try it privately. You may build and run a private copy on your own computer
+      to test how it works or to test a contribution. You may not share it.
+
+2. WHAT YOU MAY NOT DO WITHOUT WRITTEN PERMISSION
+
+   a) Copy, publish, host, distribute, sublicense, rent, lend or sell Gradient Gen
+      or any part of it, in source, compiled or any other form.
+
+   b) Modify it, make derivative works from it, or use it (its code, algorithms,
+      interface layout, texts or artwork, in whole or in part) to build another
+      program, website, service or product that does the same or a similar job,
+      whether free or paid.
+
+   c) Re-host the official website, or repackage or re-sign the official Windows app.
+
+   d) Use the names "Gradient Gen" or "Nihad Square", or the logos and artwork,
+      except as described in TRADEMARK.md.
+
+   e) Remove or change copyright, licence or ownership notices, or switch off the
+      official-site check.
+
+   f) Use the source code or artwork to train or fine-tune a machine-learning model.
+
+   g) Decompile, disassemble or reverse-engineer the compiled apps, except to the
+      extent the law does not allow this restriction.
+
+3. PERMISSION
+
+   To ask for permission, open an issue in the official repository or contact the
+   owner through the GitHub profile https://github.com/nihadsquare. Permission is
+   only valid when it is given in writing by the owner.
+
+4. CONTRIBUTIONS
+
+   If you send code, text or artwork to this project, you keep your copyright and
+   you give the owner a perpetual, worldwide, irrevocable, royalty-free,
+   non-exclusive licence to use, modify, distribute, sublicense and relicense it as
+   part of Gradient Gen. You confirm that you have the right to do this.
+
+5. THIRD-PARTY SOFTWARE
+
+   Libraries and fonts used by Gradient Gen keep their own licences, listed in
+   THIRD_PARTY_NOTICES.md. This licence does not change them.
+
+6. EARLIER VERSIONS
+
+   Gradient Gen web 4.0.0 and 4.1.0 and the desktop program numbered 3.99 and 4.1
+   were published under the MIT licence. Anyone who obtained a copy of those
+   versions under the MIT licence keeps the rights that licence gave for that copy.
+   Those rights do not extend to version 4.2 or later, nor to anything added later.
+
+7. ENDING OF THE LICENCE
+
+   If you break these terms, your rights under this licence end automatically and
+   you must stop using and delete any copies you made in breach of it.
+
+8. NO WARRANTY
+
+   GRADIENT GEN IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+   NON-INFRINGEMENT. TO THE EXTENT THE LAW ALLOWS, THE OWNER IS NOT LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF GRADIENT GEN.

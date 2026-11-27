@@ -1,3 +1,5 @@
+// Gradient Gen - Copyright (c) 2026 AK Nihad (Nihad Square). All rights reserved.
+// Source-available, not open source: see LICENSE. Copying or reuse is not permitted without written permission.
 import { describe, expect, it } from "vitest";
 import { buildStopLut, contrastRatio, fixContrast, hexToRgb, normHex, rgbToHex } from "../src/engine/color";
 import { renderGradient } from "../src/engine/render";

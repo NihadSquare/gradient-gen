@@ -1,12 +1,11 @@
 # Gradient Gen
-![Gradient Gen: gradient backgrounds, right in your browser](docs/repo-card.png)
 
 [![Deploy](https://github.com/NihadSquare/gradient-gen/actions/workflows/deploy.yml/badge.svg)](https://github.com/NihadSquare/gradient-gen/actions/workflows/deploy.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-5240FF.svg)](LICENSE)
+[![Licence: source-available](https://img.shields.io/badge/licence-source--available-5240FF.svg)](LICENSE)
 
 **Make backgrounds and wallpapers in your browser.** 28 gradient types, 25 effects, multi-stop colors with RGB / HSL / OKLab blending, palette tools, overlays and exports up to 4096 px.
 
-### 👉 [Open Gradient Gen](https://nihadsquare.github.io/gradient-gen/)   ·   ⬇ [Download for Windows](#windows-app-desktop-version-41)
+### 👉 [Open Gradient Gen](https://nihadsquare.github.io/gradient-gen/)  ·  ⬇ [Download for Windows](#windows-app-desktop-version-42)
 
 ![Gradient Gen screenshot](docs/screenshot.jpg)
 
@@ -22,26 +21,26 @@ It is a static site: every picture is drawn on your device, nothing is uploaded,
 - **Overlays**: text and logo, plus White / Black / Transparent background
 - **Output**: PNG, JPEG, WebP; 13 size presets; batch mode that saves a ZIP; guides (thirds, golden ratio, safe area, social crops)
 - **Copy as CSS / SVG / image**
-- **Auto Generate** with per-setting locks, **undo/redo**, **presets** (import/export JSON), 8 themes, keyboard shortcuts
+- **Auto Generate** with per-setting locks, **undo / redo**, **presets** (import / export JSON), 8 themes, keyboard shortcuts
 - Works on phones and tablets, and offline once loaded
 
-## Windows app (desktop version 4.1)
+## Windows app (desktop version 4.2)
 
-### ⬇ [Download GradientGen-4.1-win64.exe](https://github.com/nihadsquare/gradient-gen/releases/download/windows-v4.1/GradientGen-4.1-win64.exe)
+### ⬇ [Download GradientGen-4.2-win64.exe](https://github.com/nihadsquare/gradient-gen/releases/download/windows-v4.2/GradientGen-4.2-win64.exe)
 
-[Release page with notes and checksum](https://github.com/nihadsquare/gradient-gen/releases/tag/windows-v4.1) · [All releases](https://github.com/nihadsquare/gradient-gen/releases)
+[Release page with notes and checksum](https://github.com/nihadsquare/gradient-gen/releases/tag/windows-v4.2) · [All releases](https://github.com/nihadsquare/gradient-gen/releases)
 
 The original desktop program as one portable file. No installer, no admin rights, works offline.
 
 | | |
 | --- | --- |
-| **Version** | 4.1 |
+| **Version** | 4.2 |
 | **Works on** | Windows 10 and 11, 64-bit |
 | **Install** | None. Save the file anywhere (Desktop, USB stick) and double-click it |
 | **Internet** | Not needed |
 | **Largest picture** | 8192 × 8192 px |
 | **Your data** | Presets, palettes and preferences are saved in `%APPDATA%\GradientGen`, so you can move or replace the `.exe` without losing them |
-| **Licence** | MIT |
+| **Licence** | Source-available, all rights reserved ([LICENSE](LICENSE)). Free to use, not free to copy |
 
 **What you get:** everything in the web app (28 gradient types, 25 effects, palette tools, contrast checker, overlays, presets), plus exports up to 8192 px, batch export straight into a folder, a default save folder, and remembered window size.
 
@@ -54,7 +53,7 @@ The file is not signed with a paid certificate, so Windows SmartScreen shows a b
 The first start takes a few seconds longer because the single file unpacks itself. Some antivirus programs warn about any new program made with PyInstaller. Check your download against the `.sha256` file on the release page:
 
 ```powershell
-Get-FileHash .\GradientGen-4.1-win64.exe -Algorithm SHA256
+Get-FileHash .\GradientGen-4.2-win64.exe -Algorithm SHA256
 ```
 
 To remove the program, delete the `.exe`. To erase its saved data too, delete the folder `%APPDATA%\GradientGen`.
@@ -72,9 +71,9 @@ To remove the program, delete the `.exe`. To erase its saved data too, delete th
 
 Build it yourself, or read how it is made: [desktop/README.md](desktop/README.md).
 
-## Run it locally
+## Run it locally (for testing and contributing)
 
-Requires Node.js 18 or newer.
+Private use is allowed (see [LICENSE](LICENSE) section 1e). Requires Node.js 18 or newer.
 
 ```bash
 npm install
@@ -84,13 +83,9 @@ npm run build      # production build in dist/
 npm run preview    # serve dist/ locally
 ```
 
-## Deploy your own copy
+## Is this the official copy?
 
-1. Fork this repository (or push the code to a new one).
-2. *Settings* → *Pages* → *Build and deployment* → *Source:* **GitHub Actions**.
-3. Push to `main`. The workflow in `.github/workflows/deploy.yml` runs the checks and publishes the site at `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
-
-The build uses relative paths (`base: "./"`), so it works at any address, including a custom domain. Change `REPO_URL` and `SITE_URL` in `src/config.ts` and the address in `index.html` to point to your copy.
+The only official website is **https://nihadsquare.github.io/gradient-gen/** and the only official source and downloads are in **https://github.com/nihadsquare/gradient-gen**. The app switches itself off on other web addresses. If you find another site or program that looks like Gradient Gen, it is an unofficial copy: please [report it](TRADEMARK.md#reporting-a-copy-or-a-misuse).
 
 ## How it works
 
@@ -102,7 +97,7 @@ The build uses relative paths (`base: "./"`), so it works at any address, includ
 | `src/components/` | React interface |
 | `tests/` | Vitest unit tests |
 
-Previews are drawn by a Web Worker so the page stays responsive. If workers are unavailable, the app falls back to the main thread.
+Previews are drawn by a Web Worker so the page stays responsive. If workers are unavailable the app falls back to the main thread.
 
 See [docs/PORTING_NOTES.md](docs/PORTING_NOTES.md) for what changed compared with the desktop version and how the port was checked.
 
@@ -119,4 +114,7 @@ Bug reports and ideas are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md
 ## Credits and licence
 
 Developed by **AK Nihad** ([@NihadSquare](https://github.com/NihadSquare)) under the **Nihad Square** brand.
-Released under the [MIT licence](LICENSE). Third-party software and fonts are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+**Source-available, all rights reserved.** You may use the apps for free (also for commercial work) and keep everything you create. You may read the code. You may **not** copy, host, redistribute, sell or build another product from this code or artwork without written permission. Full terms: [LICENSE](LICENSE). Names and logos: [TRADEMARK.md](TRADEMARK.md). Versions up to 4.1 were published under the MIT licence, and copies obtained then keep those rights.
+
+Third-party software and fonts are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

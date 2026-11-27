@@ -1,6 +1,6 @@
-# Porting notes: desktop (v3.99, now numbered 4.1) → web 4.1
+# Porting notes: desktop (v3.99, now numbered 4.2) → web 4.1
 
-The desktop program was numbered 3.99 when the web version was made. From version 4.1 it carries the same number as the web app; the program itself is unchanged apart from that number.
+The desktop program was numbered 3.99 when the web version was made. From version 4.2 it carries the same number as the web app; the program itself is unchanged apart from that number.
 
 The goal is that the web app looks, behaves and draws exactly like the desktop app.
 

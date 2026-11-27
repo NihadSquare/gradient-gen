@@ -1,4 +1,6 @@
-# Libraries the app needs, and the tool that turns it into an .exe
+# Libraries the app needs, and the tools that compile it into an .exe
 pillow>=11.0,<14
 numpy>=2.0,<3
-pyinstaller>=6.10,<7
+nuitka>=4.0,<5
+ordered-set>=4.1
+zstandard>=0.23

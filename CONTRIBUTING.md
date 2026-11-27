@@ -29,6 +29,7 @@ Open an [issue](https://github.com/NihadSquare/gradient-gen/issues/new/choose) a
 - **Resolution independence.** Pattern sizes are defined for a 450 px wide picture and scale with the width (`scale` and `ref` in the engine), so an export looks like the preview.
 - **Same seed, same picture, in the desktop app too.** Inside the engine use the generators in `src/engine/nprng.ts` (exact copies of Python's `random`, NumPy's `RandomState` and `default_rng`), never `Math.random()`. If you change how a pattern draws random numbers, the tests in `tests/desktop.test.ts` will tell you.
 - **Nothing is uploaded.** Please do not add analytics, trackers or network requests to other sites.
+- **Keep the copyright header.** Every file under `src/` and `desktop/gradient_gen.py` starts with the copyright header. Copy it from a neighbouring file when you add a new one. `npm test` checks this and fails the build if a header is missing.
 - **Accessibility.** Controls need labels, keyboard access and visible focus.
 
 ## Add a gradient type or an effect
@@ -38,4 +39,4 @@ Open an [issue](https://github.com/NihadSquare/gradient-gen/issues/new/choose) a
 
 The test suite renders every type and effect, so a missing piece fails the tests.
 
-By contributing you agree that your work is released under the [MIT licence](LICENSE). Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+Gradient Gen is **source-available, not open source**. Contributions are welcome, but by sending one you accept section 4 of the [LICENSE](LICENSE): you keep your copyright and give the owner a licence to use, change and relicense your contribution as part of Gradient Gen. Copying the project for other uses is not allowed. Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).

@@ -1,9 +1,9 @@
 {
   "name": "gradient-gen",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "private": true,
   "description": "Gradient Gen for the web: 28 gradient types, 25 effects, palette tools and exports, running entirely in your browser. Same pictures as the desktop app.",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "author": {
     "name": "AK Nihad",
     "url": "https://github.com/NihadSquare"
@@ -14,7 +14,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "node tests/protection.check.mjs && vitest run"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",
@@ -27,6 +27,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "javascript-obfuscator": "^5.10.1",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3",

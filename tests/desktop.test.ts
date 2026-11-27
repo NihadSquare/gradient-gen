@@ -1,3 +1,5 @@
+// Gradient Gen - Copyright (c) 2026 AK Nihad (Nihad Square). All rights reserved.
+// Source-available, not open source: see LICENSE. Copying or reuse is not permitted without written permission.
 // Golden pictures made by the real desktop engine (BG_Gen v3.99, Python / NumPy / Pillow) at 64 x 36 px.
 // The web engine must give the same pixels, so the same seed makes the same picture in both apps.
 import { describe, expect, it } from "vitest";

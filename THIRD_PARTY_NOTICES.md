@@ -1,6 +1,6 @@
 # Third-party notices
 
-Gradient Gen is released under the MIT licence (see `LICENSE`). It uses the following open-source software. Each package keeps its own licence, shown in full inside `node_modules/<package>/LICENSE` after `npm install`.
+Gradient Gen is source-available under its own licence (see `LICENSE`); it is not open source. It uses the following open-source software, which keeps its own licences. Each package keeps its own licence, shown in full inside `node_modules/<package>/LICENSE` after `npm install`.
 
 | Package | Used for | Licence |
 | --- | --- | --- |
@@ -19,4 +19,4 @@ Bundled through [Fontsource](https://fontsource.org), licensed under the SIL Ope
 
 ## Trademarks and artwork
 
-The Gradient Gen wordmark and the NS mark are artwork of Nihad Square. The MIT licence covers the source code. Please do not use the artwork to suggest your fork is the official version.
+The Gradient Gen wordmark and the NS mark are artwork of Nihad Square. The artwork is not covered by any open licence; see `LICENSE` and `TRADEMARK.md`. Please do not use it to suggest that a copy is the official version.

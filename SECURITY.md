@@ -17,4 +17,6 @@ Please do **not** open a public issue for a security problem.
 
 The maintainer will answer within a few days and will tell you when a fix is published. If you cannot use that form, contact the maintainer through the details on the [GitHub profile](https://github.com/NihadSquare).
 
+Copies and misuse of the project are handled in [TRADEMARK.md](TRADEMARK.md).
+
 Examples of what is in scope: a way to run script through an imported preset, palette or image file; a way to make the app send data to another site.

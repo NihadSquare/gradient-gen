@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# Gradient Gen - Copyright (c) 2026 AK Nihad (Nihad Square). All rights reserved.
+# Source-available, not open source: see LICENSE. Copying or reuse is not permitted without written permission.
+# Official site: https://nihadsquare.github.io/gradient-gen/
 """
-Gradient Gen v4.1 - standalone edition (single file)
+Gradient Gen v4.2 - standalone edition (single file)
 
 Developed by Nihad Square.
 The program icon (GG.ico) and the logos (GG.png, NS.png) are embedded at the bottom of
@@ -29,8 +32,12 @@ import io
 import tempfile
 from colorsys import rgb_to_hls, hls_to_rgb
 
+_BUILD_SIG = "gg.4c5662a6a2ef.f80d"
+_ENGINE_SIG = "gg.32ca1c8ad370.10cf"
+os.environ.setdefault("GG_SIG", _BUILD_SIG + "|" + _ENGINE_SIG)
+
 APP_NAME = "Gradient Gen"
-APP_VERSION = "4.1"
+APP_VERSION = "4.2"
 APP_BUILD = "GG07112026P"
 APP_ID = "AKNCreatives.GradientGen.3"      # Windows taskbar grouping / icon identity
 MAX_DIM = 8192                              # max export width or height (px)
