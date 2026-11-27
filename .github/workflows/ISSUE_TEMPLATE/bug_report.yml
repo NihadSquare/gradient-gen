@@ -1,0 +1,29 @@
+name: Bug report
+description: Something does not work or looks wrong
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to repeat it
+      placeholder: "1. Choose type Marble\n2. Set size 4096 × 2304\n3. Click Save"
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Chrome 130 on Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: preset
+    attributes:
+      label: Preset (optional)
+      description: "Presets → Export all, then paste the JSON here. It helps us see the exact settings."
+      render: json

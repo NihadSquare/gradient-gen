@@ -1,0 +1,118 @@
+name: Build Windows app
+
+# Compiles the desktop program (desktop/gradient_gen.py) with Nuitka into GradientGen.exe on a Windows
+# machine and puts it in a DRAFT release. Nuitka turns the Python code into machine code, which is much
+# harder to take apart than a PyInstaller file. Draft first, publish second: GitHub's "immutable releases"
+# lock a release (and its files) the moment it is published.
+#
+# How to use:  Actions tab -> "Build Windows app" -> Run workflow -> type a NEW tag, for example windows-v4.2
+# Then open Releases, check the draft, and click "Publish release".
+# (The build takes about 15 to 30 minutes.)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag for the release (must be new, for example windows-v4.2)"
+        required: true
+        default: "windows-v4.2"
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      APP_VERSION: "4.2"
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: desktop/requirements.txt
+
+      - name: Install libraries
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Compile GradientGen.exe with Nuitka
+        run: |
+          $ver = "$env:APP_VERSION.0.0"
+          python -m nuitka --onefile `
+            --windows-console-mode=disable `
+            --enable-plugin=tk-inter `
+            --windows-icon-from-ico=GG.ico `
+            --output-dir=dist --output-filename=GradientGen.exe `
+            --company-name="Nihad Square" --product-name="Gradient Gen" `
+            --file-description="Gradient Gen" `
+            --file-version=$ver --product-version=$ver `
+            --copyright="Copyright (c) 2026 AK Nihad (Nihad Square). All rights reserved." `
+            --assume-yes-for-downloads --remove-output `
+            gradient_gen.py
+          if ($LASTEXITCODE -ne 0) { throw "Nuitka failed (exit code $LASTEXITCODE)" }
+
+      - name: Smoke test (the program must start and stay open)
+        run: |
+          $p = Start-Process -FilePath .\dist\GradientGen.exe -PassThru
+          Start-Sleep -Seconds 20
+          if ($p.HasExited) { throw "GradientGen.exe closed by itself (exit code $($p.ExitCode))" }
+          Stop-Process -Id $p.Id -Force
+
+      - name: Name the file and write its checksum
+        run: |
+          $name = "GradientGen-$env:APP_VERSION-win64.exe"
+          Copy-Item dist\GradientGen.exe "dist\$name"
+          $hash = (Get-FileHash "dist\$name" -Algorithm SHA256).Hash.ToLower()
+          "$hash  $name" | Out-File -Encoding ascii "dist\$name.sha256"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: GradientGen-windows
+          path: |
+            desktop/dist/GradientGen-*.exe
+            desktop/dist/GradientGen-*.sha256
+
+      - name: Create a draft release with the files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          $ErrorActionPreference = 'Continue'
+          $exe = "dist/GradientGen-$env:APP_VERSION-win64.exe"
+          $sum = "$exe.sha256"
+
+          $found = gh release view $env:TAG --repo $env:REPO --json isDraft 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            if (-not ($found | ConvertFrom-Json).isDraft) {
+              throw "A published release for '$env:TAG' already exists. GitHub locks published releases, so no files can be added. Run this workflow again with a NEW tag name."
+            }
+            gh release upload $env:TAG $exe $sum --clobber --repo $env:REPO
+            if ($LASTEXITCODE -ne 0) { throw "Could not add the files to the draft release." }
+          } else {
+            $notes = @'
+          The original Gradient Gen v{VERSION} desktop program as a single Windows file.
+          No install, works offline, exports up to 8192 px.
+
+          Download GradientGen-{VERSION}-win64.exe below. Windows 10 or 11, 64-bit.
+
+          First start: if Windows shows "Windows protected your PC", click More info, then Run anyway.
+          The file is not signed with a paid certificate.
+          To check your download, compare its SHA-256 with the .sha256 file below.
+
+          Gradient Gen is source-available (all rights reserved). See the LICENSE file in the repository.
+          '@
+            $notes = $notes.Replace('{VERSION}', $env:APP_VERSION)
+            gh release create $env:TAG $exe $sum --draft --repo $env:REPO --target $env:SHA --title "Gradient Gen Desktop $env:APP_VERSION (Windows)" --notes $notes
+            if ($LASTEXITCODE -ne 0) { throw "Could not create the draft release." }
+          }
