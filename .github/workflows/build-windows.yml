@@ -1,19 +1,21 @@
 name: Build Windows app
 
-# Builds the desktop program (desktop/gradient_gen.py) into GradientGen.exe on a Windows machine
-# and puts it in a DRAFT release. Draft first, publish second: GitHub's "immutable releases"
+# Compiles the desktop program (desktop/gradient_gen.py) with Nuitka into GradientGen.exe on a Windows
+# machine and puts it in a DRAFT release. Nuitka turns the Python code into machine code, which is much
+# harder to take apart than a PyInstaller file. Draft first, publish second: GitHub's "immutable releases"
 # lock a release (and its files) the moment it is published.
 #
-# How to use:  Actions tab -> "Build Windows app" -> Run workflow -> type a NEW tag, for example windows-v4.1
+# How to use:  Actions tab -> "Build Windows app" -> Run workflow -> type a NEW tag, for example windows-v4.2
 # Then open Releases, check the draft, and click "Publish release".
+# (The build takes about 15 to 30 minutes.)
 
 on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag for the release (must be new, for example windows-v4.1)"
+        description: "Tag for the release (must be new, for example windows-v4.2)"
         required: true
-        default: "windows-v4.1"
+        default: "windows-v4.2"
 
 permissions:
   contents: write
@@ -21,8 +23,9 @@ permissions:
 jobs:
   windows:
     runs-on: windows-latest
+    timeout-minutes: 90
     env:
-      APP_VERSION: "4.1"
+      APP_VERSION: "4.2"
     defaults:
       run:
         shell: pwsh
@@ -41,16 +44,26 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Build GradientGen.exe
+      - name: Compile GradientGen.exe with Nuitka
         run: |
-          python -m PyInstaller --noconfirm --clean --onefile --windowed `
-            --name GradientGen --icon GG.ico --version-file version_info.txt `
-            --hidden-import PIL._tkinter_finder gradient_gen.py
+          $ver = "$env:APP_VERSION.0.0"
+          python -m nuitka --onefile `
+            --windows-console-mode=disable `
+            --enable-plugin=tk-inter `
+            --windows-icon-from-ico=GG.ico `
+            --output-dir=dist --output-filename=GradientGen.exe `
+            --company-name="Nihad Square" --product-name="Gradient Gen" `
+            --file-description="Gradient Gen" `
+            --file-version=$ver --product-version=$ver `
+            --copyright="Copyright (c) 2026 AK Nihad (Nihad Square). All rights reserved." `
+            --assume-yes-for-downloads --remove-output `
+            gradient_gen.py
+          if ($LASTEXITCODE -ne 0) { throw "Nuitka failed (exit code $LASTEXITCODE)" }
 
       - name: Smoke test (the program must start and stay open)
         run: |
           $p = Start-Process -FilePath .\dist\GradientGen.exe -PassThru
-          Start-Sleep -Seconds 15
+          Start-Sleep -Seconds 20
           if ($p.HasExited) { throw "GradientGen.exe closed by itself (exit code $($p.ExitCode))" }
           Stop-Process -Id $p.Id -Force
 
@@ -96,6 +109,8 @@ jobs:
           First start: if Windows shows "Windows protected your PC", click More info, then Run anyway.
           The file is not signed with a paid certificate.
           To check your download, compare its SHA-256 with the .sha256 file below.
+
+          Gradient Gen is source-available (all rights reserved). See the LICENSE file in the repository.
           '@
             $notes = $notes.Replace('{VERSION}', $env:APP_VERSION)
             gh release create $env:TAG $exe $sum --draft --repo $env:REPO --target $env:SHA --title "Gradient Gen Desktop $env:APP_VERSION (Windows)" --notes $notes
