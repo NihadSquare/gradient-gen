@@ -9,6 +9,10 @@
 
 ![Gradient Gen screenshot](docs/screenshot.jpg)
 
+**28 gradient types, 25 effects, endless combinations:**
+
+![A grid of 12 gradients made with Gradient Gen: Mesh, Aurora, Stained glass, Marble, Conical, Radial, Linear with Grain, Kaleidoscope, Perlin, Halftone, Voronoi and Spiral](docs/gallery.jpg)
+
 It is a static site: every picture is drawn on your device, nothing is uploaded, there is no sign-up and no server to run or pay for. It is the web version of the desktop app *Gradient Gen* (the Windows version is available too, see below): the same interface, the same windows, and the same seed gives the same picture in both.
 
 ## Features
@@ -23,6 +27,14 @@ It is a static site: every picture is drawn on your device, nothing is uploaded,
 - **Copy as CSS / SVG / image**
 - **Auto Generate** with per-setting locks, **undo / redo**, **presets** (import / export JSON), 8 themes, keyboard shortcuts
 - Works on phones and tablets, and offline once loaded
+
+**Palette tools**: pick a built-in palette, generate a harmony, or pull colors straight out of a photo.
+
+![The Palette Tools window, showing the Library tab with built-in palettes and copy-as buttons](docs/feature-palette.jpg)
+
+**8 themes**: the interface itself is a gradient tool — pick the look that fits your eyes and your screenshots.
+
+![The theme picker, showing eight color themes: Midnight, Graphite, Aurora, Sunset, Rose, Ocean, Forest and Paper](docs/feature-themes.jpg)
 
 ## Windows app (desktop version 4.2)
 
